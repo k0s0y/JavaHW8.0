@@ -1,66 +1,81 @@
 package ru.netology.radio;
 
 public class Radio {
-   public int currentWave;
-   public int currentVolume;
+    private int currentWave;
+    private int currentVolume;
 
-   public int getCurrentWave(){
-      return currentWave;
-   }
+    //getters
+    public int getCurrentWave() {
+        return currentWave;
+    }
 
-   public void  setCurrentWave (int currentWave) {
-      if (currentWave < 0) {
-         return;
-      }
-      if (currentWave > 9) {
-         currentWave = 0;
-      }
-      this.currentWave =  currentWave;
-   }
+    //setters
+    public void setCurrentWave(int currentWave) {
+        if (currentWave < 0) {
+            return;
+        }
+        if (currentWave > 9) {
+            currentWave = 9;
+        }
+        this.currentWave = currentWave;
+    }
 
-   public int next (int currentWave) {
-      if (currentWave<9) {
-         currentWave = currentWave + 1;
-      }
-      if (currentWave == 9) {
-         currentWave = 0;
-      }
-      return currentWave;
-   }
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
 
-   public int prev(int currentWave) {
-      if (currentWave<=9 && currentWave != 0) {
-         currentWave = currentWave-1;
-      }
-      if (currentWave == 0) {
-         currentWave = 9;
-      }
-      return currentWave;
-   }
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume <= 0) {
+            return;
+        }
+        if (currentVolume > 10) {
+            currentVolume = 10;
+        }
+        this.currentVolume = currentVolume;
+    }
 
-   public void  setCurrentVolume (int currentVolume) {
-      if (currentVolume <= 0) {
-         return;
-      }
-      if (currentVolume > 10) {
-         currentVolume = 10;
-      }
-      this.currentVolume =  currentVolume;
-   }
+    //remote controller wave functions
+    public void next() {
+        if (currentWave < 9) {
+            currentWave = currentWave + 1;
+        }
+        this.currentWave = currentWave;
+    }
 
-   public int increaseVolume(int currentVolume) {
-      if (currentVolume < 10) {
-         currentVolume = currentVolume + 1;
-      }
-      return currentVolume;
-   }
+    public void nextOverMax() {
+        if (currentWave == 9) {
+            currentWave = 0;
+        }
+        this.currentWave = currentWave;
+    }
 
-   public int reduceVolume() {
-      if (currentVolume > 0) {
-         currentVolume = currentVolume - 1;
-      }
-      return currentVolume;
-   }
+    public void prev() {
+        if (currentWave != 0) {
+            currentWave = currentWave - 1;
+        }
+        this.currentWave = currentWave;
+    }
 
+    public void prevLessMin() {
+        if (currentWave == 0) {
+            currentWave = 9;
+        }
+        this.currentWave = currentWave;
+    }
+
+    //remote controller volume functions
+    public void increaseVolume() {
+        if (currentVolume < 10) {
+            currentVolume = currentVolume + 1;
+        }
+        this.currentVolume = currentVolume;
+    }
+
+    public void reduceVolume() {
+        if (currentVolume > 0) {
+            currentVolume = currentVolume - 1;
+        }
+        this.currentVolume = currentVolume;
+    }
 
 }
