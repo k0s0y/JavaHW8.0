@@ -39,10 +39,6 @@ public class Radio {
         if (currentWave < 9) {
             currentWave = currentWave + 1;
         }
-        this.currentWave = currentWave;
-    }
-
-    public void nextOverMax() {
         if (currentWave == 9) {
             currentWave = 0;
         }
@@ -54,14 +50,12 @@ public class Radio {
             currentWave = currentWave - 1;
         }
         this.currentWave = currentWave;
-    }
-
-    public void prevLessMin() {
         if (currentWave == 0) {
             currentWave = 9;
         }
         this.currentWave = currentWave;
     }
+
 
     //remote controller volume functions
     public void increaseVolume() {

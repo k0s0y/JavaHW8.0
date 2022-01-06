@@ -59,29 +59,9 @@ class RadioTest {
     @Test
     public void nextOverMaxStation() {
         radio.setCurrentWave(9);
-        radio.nextOverMax();
-
-        int expected = 0;
-        int actual = radio.getCurrentWave();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void nextMoreMaxStation() {
-        radio.setCurrentWave(9);
         radio.next();
 
-        int expected = 9;
-        int actual = radio.getCurrentWave();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void nextOverInValue() {
-        radio.setCurrentWave(5);
-        radio.nextOverMax();
-
-        int expected = 5;
+        int expected = 0;
         int actual = radio.getCurrentWave();
         assertEquals(expected, actual);
     }
@@ -103,40 +83,7 @@ class RadioTest {
         radio.setCurrentWave(0);
         radio.prev();
 
-        int expected = 0;
-        int actual = radio.getCurrentWave();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void prevOverMaxStation() {
-        radio.setCurrentWave(12);
-        radio.prev();
-
-        int expected = 8;
-        int actual = radio.getCurrentWave();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void prevLessMinStationInValueZero() {
-        radio.setCurrentWave(0);
-        radio.prevLessMin();
-
         int expected = 9;
-        int actual = radio.getCurrentWave();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void prevLessStationInValue() {
-        radio.setCurrentWave(5);
-        radio.prevLessMin();
-
-        int expected = 5;
         int actual = radio.getCurrentWave();
 
         assertEquals(expected, actual);
