@@ -36,22 +36,19 @@ public class Radio {
 
     //remote controller wave functions
     public void next() {
-        if (currentWave < 9) {
-            currentWave = currentWave + 1;
-        }
         if (currentWave == 9) {
             currentWave = 0;
+        } else {
+            currentWave = currentWave + 1;
         }
         this.currentWave = currentWave;
     }
 
     public void prev() {
-        if (currentWave != 0) {
-            currentWave = currentWave - 1;
-        }
-        this.currentWave = currentWave;
         if (currentWave == 0) {
             currentWave = 9;
+        } else {
+            currentWave = currentWave - 1;
         }
         this.currentWave = currentWave;
     }

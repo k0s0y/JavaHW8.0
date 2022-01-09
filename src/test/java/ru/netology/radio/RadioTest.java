@@ -66,6 +66,16 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void nextPreMaxStation() {
+        radio.setCurrentWave(8);
+        radio.next();
+
+        int expected = 9;
+        int actual = radio.getCurrentWave();
+        assertEquals(expected, actual);
+    }
+
     // prev method testing
     @Test
     public void prevMaxStationInValue() {
@@ -84,6 +94,17 @@ class RadioTest {
         radio.prev();
 
         int expected = 9;
+        int actual = radio.getCurrentWave();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void prevPreZeroStation() {
+        radio.setCurrentWave(1);
+        radio.prev();
+
+        int expected = 0;
         int actual = radio.getCurrentWave();
 
         assertEquals(expected, actual);
