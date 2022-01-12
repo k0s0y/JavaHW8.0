@@ -5,14 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 
+
 class RadioTest {
-    Radio radio = new Radio();
+    Radio radio = new Radio(100);
 
     // install station method testing
     @Test
     public void installStationInValue() {
-        radio.setCurrentWave(8);
-        int expected = 8;
+        radio.setCurrentWave(radio.getMaxCountOfStation()-1);
+        int expected = radio.getMaxCountOfStation()-1;
         int actual = radio.getCurrentWave();
 
         assertEquals(expected, actual);
@@ -20,8 +21,8 @@ class RadioTest {
 
     @Test
     public void installStationMaxStation() {
-        radio.setCurrentWave(9);
-        int expected = 9;
+        radio.setCurrentWave(radio.getMaxCountOfStation());
+        int expected = radio.getMaxCountOfStation();
         int actual = radio.getCurrentWave();
 
         assertEquals(expected, actual);
@@ -29,8 +30,8 @@ class RadioTest {
 
     @Test
     public void installStationMoreMinStation() {
-        radio.setCurrentWave(10);
-        int expected = 9;
+        radio.setCurrentWave(radio.getMaxCountOfStation()+1);
+        int expected = radio.getMaxCountOfStation();
         int actual = radio.getCurrentWave();
 
         assertEquals(expected, actual);
@@ -58,7 +59,7 @@ class RadioTest {
 
     @Test
     public void nextOverMaxStation() {
-        radio.setCurrentWave(9);
+        radio.setCurrentWave(radio.getMaxCountOfStation());
         radio.next();
 
         int expected = 0;
@@ -79,10 +80,10 @@ class RadioTest {
     // prev method testing
     @Test
     public void prevMaxStationInValue() {
-        radio.setCurrentWave(9);
+        radio.setCurrentWave(radio.getMaxCountOfStation());
         radio.prev();
 
-        int expected = 8;
+        int expected = radio.getMaxCountOfStation() -1;
         int actual = radio.getCurrentWave();
 
         assertEquals(expected, actual);
@@ -93,7 +94,7 @@ class RadioTest {
         radio.setCurrentWave(0);
         radio.prev();
 
-        int expected = 9;
+        int expected = radio.getMaxCountOfStation();
         int actual = radio.getCurrentWave();
 
         assertEquals(expected, actual);
@@ -125,9 +126,9 @@ class RadioTest {
 
     @Test
     public void increaseVolumeOverMax() {
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(101);
         radio.increaseVolume();
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
 
         assertEquals(expected, actual);
